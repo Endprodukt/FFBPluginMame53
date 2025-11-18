@@ -1456,27 +1456,28 @@ static void FFBGameEffects(EffectConstants* constants, Helpers* helpers, EffectT
 			{
 				if (stateFFB == 0x07)
 					DontSineUntilRaceStart = true;
-
 				if (stateFFB == 0x09)
 					DontSineUntilRaceStart = false;
-
 				//Spring
 				double percentForce = 0.8;
 				triggers->Spring(percentForce);
+				// Stoppe Constant-Effekt, da Spring aktiv ist
+				triggers->ConstantInf(constants->DIRECTION_FROM_LEFT, 0.0);
 			}
-
 			if (stateFFB == 0x20 || stateFFB == 0x28) //Clutch
 			{
 				double percentForce = 0.4;
 				triggers->Friction(percentForce);
+				// Stoppe Constant-Effekt
+				triggers->ConstantInf(constants->DIRECTION_FROM_LEFT, 0.0);
 			}
-
 			if (stateFFB > 0x2F && stateFFB < 0x40) //Centering
 			{
 				double percentForce = (stateFFB - 47) / 11.0;
 				triggers->Spring(percentForce);
+				// Stoppe Constant-Effekt
+				triggers->ConstantInf(constants->DIRECTION_FROM_LEFT, 0.0);
 			}
-
 			if (stateFFB == 0x40 || stateFFB == 0x46 || stateFFB == 0x4A) //Uncentering
 			{
 				if (stateFFB == 0x40)
@@ -1494,21 +1495,27 @@ static void FFBGameEffects(EffectConstants* constants, Helpers* helpers, EffectT
 						triggers->Sine(70, 30, percentForce);
 					}
 				}
+				// Stoppe Constant-Effekt
+				triggers->ConstantInf(constants->DIRECTION_FROM_LEFT, 0.0);
 			}
-
 			if (stateFFB == 0x50 || stateFFB == 0x5F) //Roll Left
 			{
 				double percentForce = 0.5;
 				double percentLength = 100;
 				triggers->Rumble(0, percentForce, percentLength);
-				triggers->Constant(constants->DIRECTION_FROM_RIGHT, percentForce);
+				triggers->ConstantInf(constants->DIRECTION_FROM_RIGHT, percentForce);
 			}
 			else if (stateFFB == 0x60 || stateFFB == 0x6F) //Roll Right
 			{
 				double percentForce = 0.5;
 				double percentLength = 100;
 				triggers->Rumble(percentForce, 0, percentLength);
-				triggers->Constant(constants->DIRECTION_FROM_LEFT, percentForce);
+				triggers->ConstantInf(constants->DIRECTION_FROM_LEFT, percentForce);
+			}
+			// WICHTIG: Wenn weder Roll Left noch Roll Right aktiv ist, stoppe den Effekt
+			else if (stateFFB != 0x50 && stateFFB != 0x5F && stateFFB != 0x60 && stateFFB != 0x6F)
+			{
+				triggers->ConstantInf(constants->DIRECTION_FROM_LEFT, 0.0);
 			}
 		}
 	}
