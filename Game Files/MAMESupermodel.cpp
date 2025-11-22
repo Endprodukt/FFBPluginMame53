@@ -273,6 +273,7 @@ std::string midnruna2("midnruna2");
 std::string midnrunj("midnrunj");
 std::string roadedge("roadegde");
 std::string xrally("xrally");
+std::string cartfury("cartfury");
 
 //Flycast Below
 std::string InitialDVer1("INITIAL D\n");
@@ -539,6 +540,19 @@ static int EnableForceSpringEffectCrusnWld = GetPrivateProfileInt(TEXT("Settings
 static int ForceSpringStrengthCrusnWld = GetPrivateProfileInt(TEXT("Settings"), TEXT("ForceSpringStrengthCrusnWld"), 0, settingsFilename);
 static int EnableDamperCrusnWld = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableDamperCrusnWld"), 0, settingsFilename);
 static int DamperStrengthCrusnWld = GetPrivateProfileInt(TEXT("Settings"), TEXT("DamperStrengthCrusnWld"), 100, settingsFilename);
+
+static int configMinForceCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("MinForceCartFury"), 0, settingsFilename);
+static int configMaxForceCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("MaxForceCartFury"), 100, settingsFilename);
+static int configAlternativeMinForceLeftCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceLeftCartFury"), 0, settingsFilename);
+static int configAlternativeMaxForceLeftCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMaxForceLeftCartFury"), 100, settingsFilename);
+static int configAlternativeMinForceRightCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceRightCartFury"), 0, settingsFilename);
+static int configAlternativeMaxForceRightCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMaxForceRightCartFury"), 100, settingsFilename);
+static int configFeedbackLengthCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("FeedbackLengthCartFury"), 120, settingsFilename);
+static int PowerModeCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("PowerModeCartFury"), 0, settingsFilename);
+static int EnableForceSpringEffectCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableForceSpringEffectCartFury"), 0, settingsFilename);
+static int ForceSpringStrengthCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("ForceSpringStrengthCartFury"), 0, settingsFilename);
+static int EnableDamperCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableDamperCartFury"), 0, settingsFilename);
+static int DamperStrengthCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("DamperStrengthCartFury"), 100, settingsFilename);
 
 static int configMinForceWindheat = GetPrivateProfileInt(TEXT("Settings"), TEXT("MinForceWindheat"), 0, settingsFilename);
 static int configMaxForceWindheat = GetPrivateProfileInt(TEXT("Settings"), TEXT("MaxForceWindheat"), 100, settingsFilename);
@@ -975,6 +989,19 @@ static int EnableForceSpringEffectSRallyMAME = GetPrivateProfileInt(TEXT("Settin
 static int ForceSpringStrengthSRallyMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("ForceSpringStrengthSRally"), 0, settingsFilename);
 static int EnableDamperSRallyMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableDamperSRally"), 0, settingsFilename);
 static int DamperStrengthSRallyMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("DamperStrengthSRally"), 100, settingsFilename);
+
+static int configMinForceSTCCMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("MinForceSTCC"), 0, settingsFilename);
+static int configMaxForceSTCCMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("MaxForceSTCC"), 100, settingsFilename);
+static int configAlternativeMinForceLeftSTCCMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceLeftSTCC"), 0, settingsFilename);
+static int configAlternativeMaxForceLeftSTCCMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMaxForceLeftSTCC"), 100, settingsFilename);
+static int configAlternativeMinForceRightSTCCMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceRightSTCC"), 0, settingsFilename);
+static int configAlternativeMaxForceRightSTCCMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMaxForceRightSTCC"), 100, settingsFilename);
+static int PowerModeSTCCMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("PowerModeSTCC"), 0, settingsFilename);
+static int configFeedbackLengthSTCCMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("FeedbackLengthSTCC"), 120, settingsFilename);
+static int EnableForceSpringEffectSTCCMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableForceSpringEffectSTCC"), 0, settingsFilename);
+static int ForceSpringStrengthSTCCMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("ForceSpringStrengthSTCC"), 0, settingsFilename);
+static int EnableDamperSTCCMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableDamperSTCC"), 0, settingsFilename);
+static int DamperStrengthSTCCMAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("DamperStrengthSTCC"), 100, settingsFilename);
 
 static int configMinForceIndy500MAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("MinForceIndy500"), 0, settingsFilename);
 static int configMaxForceIndy500MAME = GetPrivateProfileInt(TEXT("Settings"), TEXT("MaxForceIndy500"), 100, settingsFilename);
@@ -2875,6 +2902,24 @@ void MAMESupermodel::FFBLoop(EffectConstants* constants, Helpers* helpers, Effec
 				DamperStrength = DamperStrengthDirtDevils;
 
 				RunningFFB = "DirtDevilsActive";
+			
+			}
+			if (romname == cartfury)
+			{
+				configMinForce = configMinForceCartFury;
+				configMaxForce = configMaxForceCartFury;
+				configAlternativeMinForceLeft = configAlternativeMinForceLeftCartFury;
+				configAlternativeMaxForceLeft = configAlternativeMaxForceLeftCartFury;
+				configAlternativeMinForceRight = configAlternativeMinForceRightCartFury;
+				configAlternativeMaxForceRight = configAlternativeMaxForceRightCartFury;
+				configFeedbackLength = configFeedbackLengthCartFury;
+				PowerMode = PowerModeCartFury;
+				EnableForceSpringEffect = EnableForceSpringEffectCartFury;
+				ForceSpringStrength = ForceSpringStrengthCartFury;
+				EnableDamper = EnableDamperCartFury;
+				DamperStrength = DamperStrengthCartFury;
+
+				RunningFFB = "RacingFullValueActive1";
 			}
 
 			if (romname == srally2 || romname == srally2x || romname == srally2dx || romname == srally2p || romname == srally2pa)
@@ -3713,6 +3758,23 @@ void MAMESupermodel::FFBLoop(EffectConstants* constants, Helpers* helpers, Effec
 				DamperStrength = DamperStrengthSRallyMAME;
 
 				RunningFFB = "srallynew";
+			}
+			if (romname == stcc || romname == stcca || romname == stccb)
+			{
+				configMinForce = configMinForceSTCCMAME;
+				configMaxForce = configMaxForceSTCCMAME;
+				configAlternativeMinForceLeft = configAlternativeMinForceLeftSTCCMAME;
+				configAlternativeMaxForceLeft = configAlternativeMaxForceLeftSTCCMAME;
+				configAlternativeMinForceRight = configAlternativeMinForceRightSTCCMAME;
+				configAlternativeMaxForceRight = configAlternativeMaxForceRightSTCCMAME;
+				configFeedbackLength = configFeedbackLengthSTCCMAME;
+				PowerMode = PowerModeSTCCMAME;
+				EnableForceSpringEffect = EnableForceSpringEffectSTCCMAME;
+				ForceSpringStrength = ForceSpringStrengthSTCCMAME;
+				EnableDamper = EnableDamperSTCCMAME;
+				DamperStrength = DamperStrengthSTCCMAME;
+
+				RunningFFB = "m2new";
 			}
 
 			if (romname == dirtdash || romname == dirtdasha || romname == dirtdashj)
