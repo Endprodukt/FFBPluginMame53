@@ -274,6 +274,20 @@ std::string midnrunj("midnrunj");
 std::string roadedge("roadegde");
 std::string xrally("xrally");
 std::string cartfury("cartfury");
+std::string thrilld("thrilld");
+std::string thrillda("thrillda");
+std::string thrillde("thrillde");
+std::string thrilldj("thrilldj");
+std::string racingj("racingj");
+std::string racingja("racingja");
+std::string racingje("racingje");
+std::string racingju("racingju");
+std::string racingjj("racingjj");
+std::string racingj2("racingj2");
+std::string racingj2a("racingj2a");
+std::string racingj2e("racingj2e");
+std::string racingj2u("racingj2u");
+std::string racingj2j("racingj2j");
 
 //Flycast Below
 std::string InitialDVer1("INITIAL D\n");
@@ -554,6 +568,19 @@ static int ForceSpringStrengthCartFury = GetPrivateProfileInt(TEXT("Settings"), 
 static int EnableDamperCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableDamperCartFury"), 0, settingsFilename);
 static int DamperStrengthCartFury = GetPrivateProfileInt(TEXT("Settings"), TEXT("DamperStrengthCartFury"), 100, settingsFilename);
 
+static int configMinForceThrillD = GetPrivateProfileInt(TEXT("Settings"), TEXT("MinForceThrillD"), 0, settingsFilename);
+static int configMaxForceThrillD = GetPrivateProfileInt(TEXT("Settings"), TEXT("MaxForceThrillD"), 100, settingsFilename);
+static int configAlternativeMinForceLeftThrillD = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceLeftThrillD"), 0, settingsFilename);
+static int configAlternativeMaxForceLeftThrillD = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMaxForceLeftThrillD"), 100, settingsFilename);
+static int configAlternativeMinForceRightThrillD = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceRightThrillD"), 0, settingsFilename);
+static int configAlternativeMaxForceRightThrillD = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMaxForceRightThrillD"), 100, settingsFilename);
+static int configFeedbackLengthThrillD = GetPrivateProfileInt(TEXT("Settings"), TEXT("FeedbackLengthThrillD"), 120, settingsFilename);
+static int PowerModeThrillD = GetPrivateProfileInt(TEXT("Settings"), TEXT("PowerModeThrillD"), 0, settingsFilename);
+static int EnableForceSpringEffectThrillD = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableForceSpringEffectThrillD"), 0, settingsFilename);
+static int ForceSpringStrengthThrillD = GetPrivateProfileInt(TEXT("Settings"), TEXT("ForceSpringStrengthThrillD"), 0, settingsFilename);
+static int EnableDamperThrillD = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableDamperThrillD"), 0, settingsFilename);
+static int DamperStrengthThrillD = GetPrivateProfileInt(TEXT("Settings"), TEXT("DamperStrengthThrillD"), 100, settingsFilename);
+
 static int configMinForceWindheat = GetPrivateProfileInt(TEXT("Settings"), TEXT("MinForceWindheat"), 0, settingsFilename);
 static int configMaxForceWindheat = GetPrivateProfileInt(TEXT("Settings"), TEXT("MaxForceWindheat"), 100, settingsFilename);
 static int configAlternativeMinForceLeftWindheat = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceLeftWindheat"), 0, settingsFilename);
@@ -605,6 +632,32 @@ static int EnableForceSpringEffectOffRoadC = GetPrivateProfileInt(TEXT("Settings
 static int ForceSpringStrengthOffRoadC = GetPrivateProfileInt(TEXT("Settings"), TEXT("ForceSpringStrengthOffRoadC"), 0, settingsFilename);
 static int EnableDamperOffRoadC = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableDamperOffRoadC"), 0, settingsFilename);
 static int DamperStrengthOffRoadC = GetPrivateProfileInt(TEXT("Settings"), TEXT("DamperStrengthOffRoadC"), 100, settingsFilename);
+
+static int configMinForceRacingJ = GetPrivateProfileInt(TEXT("Settings"), TEXT("MinForceRacingJ"), 0, settingsFilename);
+static int configMaxForceRacingJ = GetPrivateProfileInt(TEXT("Settings"), TEXT("MaxForceRacingJ"), 100, settingsFilename);
+static int configAlternativeMinForceLeftRacingJ = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceLeftRacingJ"), 0, settingsFilename);
+static int configAlternativeMaxForceLeftRacingJ = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMaxForceLeftRacingJ"), 100, settingsFilename);
+static int configAlternativeMinForceRightRacingJ = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceRightRacingJ"), 0, settingsFilename);
+static int configAlternativeMaxForceRightRacingJ = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMaxForceRightRacingJ"), 100, settingsFilename);
+static int configFeedbackLengthRacingJ = GetPrivateProfileInt(TEXT("Settings"), TEXT("FeedbackLengthRacingJ"), 120, settingsFilename);
+static int PowerModeRacingJ = GetPrivateProfileInt(TEXT("Settings"), TEXT("PowerModeRacingJ"), 0, settingsFilename);
+static int EnableForceSpringEffectRacingJ = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableForceSpringEffectRacingJ"), 0, settingsFilename);
+static int ForceSpringStrengthRacingJ = GetPrivateProfileInt(TEXT("Settings"), TEXT("ForceSpringStrengthRacingJ"), 0, settingsFilename);
+static int EnableDamperRacingJ = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableDamperRacingJ"), 0, settingsFilename);
+static int DamperStrengthRacingJ = GetPrivateProfileInt(TEXT("Settings"), TEXT("DamperStrengthRacingJ"), 100, settingsFilename);
+
+static int configMinForceRacingJ2 = GetPrivateProfileInt(TEXT("Settings"), TEXT("MinForceRacingJ2"), 0, settingsFilename);
+static int configMaxForceRacingJ2 = GetPrivateProfileInt(TEXT("Settings"), TEXT("MaxForceRacingJ2"), 100, settingsFilename);
+static int configAlternativeMinForceLeftRacingJ2 = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceLeftRacingJ2"), 0, settingsFilename);
+static int configAlternativeMaxForceLeftRacingJ2 = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMaxForceLeftRacingJ2"), 100, settingsFilename);
+static int configAlternativeMinForceRightRacingJ2 = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceRightRacingJ2"), 0, settingsFilename);
+static int configAlternativeMaxForceRightRacingJ2 = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMaxForceRightRacingJ2"), 100, settingsFilename);
+static int configFeedbackLengthRacingJ2 = GetPrivateProfileInt(TEXT("Settings"), TEXT("FeedbackLengthRacingJ2"), 120, settingsFilename);
+static int PowerModeRacingJ2 = GetPrivateProfileInt(TEXT("Settings"), TEXT("PowerModeRacingJ2"), 0, settingsFilename);
+static int EnableForceSpringEffectRacingJ2 = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableForceSpringEffectRacingJ2"), 0, settingsFilename);
+static int ForceSpringStrengthRacingJ2 = GetPrivateProfileInt(TEXT("Settings"), TEXT("ForceSpringStrengthRacingJ2"), 0, settingsFilename);
+static int EnableDamperRacingJ2 = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableDamperRacingJ2"), 0, settingsFilename);
+static int DamperStrengthRacingJ2 = GetPrivateProfileInt(TEXT("Settings"), TEXT("DamperStrengthRacingJ2"), 100, settingsFilename);
 
 static int configMinForceCrusnUSA = GetPrivateProfileInt(TEXT("Settings"), TEXT("MinForceCrusnUSA"), 0, settingsFilename);
 static int configMaxForceCrusnUSA = GetPrivateProfileInt(TEXT("Settings"), TEXT("MaxForceCrusnUSA"), 100, settingsFilename);
@@ -2992,6 +3045,23 @@ void MAMESupermodel::FFBLoop(EffectConstants* constants, Helpers* helpers, Effec
 
 				RunningFFB = "RacingFullValueActive2";
 			}
+			if (romname == thrilld || romname == thrillda || romname == thrilldj || romname == thrillde)
+			{
+				configMinForce = configMinForceThrillD;
+				configMaxForce = configMaxForceThrillD;
+				configAlternativeMinForceLeft = configAlternativeMinForceLeftThrillD;
+				configAlternativeMaxForceLeft = configAlternativeMaxForceLeftThrillD;
+				configAlternativeMinForceRight = configAlternativeMinForceRightThrillD;
+				configAlternativeMaxForceRight = configAlternativeMaxForceRightThrillD;
+				configFeedbackLength = configFeedbackLengthThrillD;
+				PowerMode = PowerModeThrillD;
+				EnableForceSpringEffect = EnableForceSpringEffectThrillD;
+				ForceSpringStrength = ForceSpringStrengthThrillD;
+				EnableDamper = EnableDamperThrillD;
+				DamperStrength = DamperStrengthThrillD;
+
+				RunningFFB = "Konami";
+			}
 
 			if (romname == sfrushrk || romname == sfrushrkwo)
 			{
@@ -3524,6 +3594,41 @@ void MAMESupermodel::FFBLoop(EffectConstants* constants, Helpers* helpers, Effec
 				RumbleStrengthRightMotor = RumbleStrengthRightMotorOutrun;
 
 				RunningFFB = "OutrunActive";
+			}
+			if (romname == racingj || romname == racingja || romname == racingje || romname == racingjj || romname == racingju)
+			{
+				configMinForce = configMinForceRacingJ;
+				configMaxForce = configMaxForceRacingJ;
+				configAlternativeMinForceLeft = configAlternativeMinForceLeftRacingJ;
+				configAlternativeMaxForceLeft = configAlternativeMaxForceLeftRacingJ;
+				configAlternativeMinForceRight = configAlternativeMinForceRightRacingJ;
+				configAlternativeMaxForceRight = configAlternativeMaxForceRightRacingJ;
+				configFeedbackLength = configFeedbackLengthRacingJ;
+				PowerMode = PowerModeRacingJ;
+				EnableForceSpringEffect = EnableForceSpringEffectRacingJ;
+				ForceSpringStrength = ForceSpringStrengthRacingJ;
+				EnableDamper = EnableDamperRacingJ;
+				DamperStrength = DamperStrengthRacingJ;
+
+				RunningFFB = "Konami";
+			}
+
+			if (romname == racingj2 || romname == racingj2a || romname == racingj2e || romname == racingj2j || romname == racingj2u)
+			{
+				configMinForce = configMinForceRacingJ2;
+				configMaxForce = configMaxForceRacingJ2;
+				configAlternativeMinForceLeft = configAlternativeMinForceLeftRacingJ2;
+				configAlternativeMaxForceLeft = configAlternativeMaxForceLeftRacingJ2;
+				configAlternativeMinForceRight = configAlternativeMinForceRightRacingJ2;
+				configAlternativeMaxForceRight = configAlternativeMaxForceRightRacingJ2;
+				configFeedbackLength = configFeedbackLengthRacingJ2;
+				PowerMode = PowerModeRacingJ2;
+				EnableForceSpringEffect = EnableForceSpringEffectRacingJ2;
+				ForceSpringStrength = ForceSpringStrengthRacingJ2;
+				EnableDamper = EnableDamperRacingJ2;
+				DamperStrength = DamperStrengthRacingJ2;
+
+				RunningFFB = "Konami";
 			}
 
 			if (romname == pdrift || romname == pdrifta || romname == pdrifte || romname == pdriftj || romname == pdriftl)
