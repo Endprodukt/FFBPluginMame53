@@ -1731,9 +1731,7 @@ static void FFBGameEffects(EffectConstants* constants, Helpers* helpers, EffectT
 			}
 		}
 	}
-
-
-			if (RunningFFB == Konami)
+	if (RunningFFB == Konami)
 	{
 		if (name == wheel || name == wheel_motor || name == pcboutput0 || name == output0)
 		{
@@ -1741,10 +1739,11 @@ static void FFBGameEffects(EffectConstants* constants, Helpers* helpers, EffectT
 			std::string ffs = std::to_string(stateFFB);
 			helpers->log((char*)ffs.c_str());
 
-			if (stateFFB > 0x7F && stateFFB < 0x90) // 0x80–0x8F = RECHTS
+			if (stateFFB > 0x7F && stateFFB < 0x90)  // 0x80–0x8F = RECHTS
 			{
 				double percentForce = (stateFFB - 127) / 16.0;
 				double percentLength = 100;
+
 				triggers->Rumble(0, percentForce, percentLength);
 				triggers->ConstantInf(constants->DIRECTION_FROM_RIGHT, percentForce);
 			}
@@ -1752,12 +1751,14 @@ static void FFBGameEffects(EffectConstants* constants, Helpers* helpers, EffectT
 			{
 				double percentForce = (stateFFB - 143) / 16.0;
 				double percentLength = 100;
+
 				triggers->Rumble(percentForce, 0, percentLength);
 				triggers->ConstantInf(constants->DIRECTION_FROM_LEFT, percentForce);
 			}
 
 		}
 	}
+
 	if (RunningFFB == m2new) //Mame games using all values 
 	{
 		if (name == wheel || name == wheel_motor || name == pcboutput0 || name == output0)
@@ -2087,7 +2088,7 @@ static void FFBGameEffects(EffectConstants* constants, Helpers* helpers, EffectT
 				double percentForce = HardDrivinFFB / 100.0;
 				double percentLength = 100;
 				triggers->Rumble(percentForce, 0, percentLength);
-				triggers->Constant(constants->DIRECTION_FROM_LEFT, percentForce);
+				triggers->ConstantInf(constants->DIRECTION_FROM_LEFT, percentForce);
 			}
 			else if (HardDrivinFFB < 0)
 			{
@@ -2095,7 +2096,7 @@ static void FFBGameEffects(EffectConstants* constants, Helpers* helpers, EffectT
 				double percentForce = HardDrivinFFB / 100.0;
 				double percentLength = 100;
 				triggers->Rumble(0, percentForce, percentLength);
-				triggers->Constant(constants->DIRECTION_FROM_RIGHT, percentForce);
+				triggers->ConstantInf(constants->DIRECTION_FROM_RIGHT, percentForce);
 			}
 		}
 	}
