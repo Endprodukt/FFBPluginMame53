@@ -180,6 +180,7 @@ std::string raverace("raverace");
 std::string raveracw("raveracw");
 std::string raveracj("raveracj");
 std::string raveracja("raveracja");
+std::string overrev("overrev");
 std::string othunder("othunder");
 std::string othundero("othundero");
 std::string othunderuo("othunderuo");
@@ -334,10 +335,12 @@ std::string RawDrive("RawDrive");
 std::string digit0("digit0");
 std::string digit1("digit1");
 std::string wheel("wheel");
+std::string wheel0("wheel0");
 std::string pcboutput0("pcboutput0"); 
 std::string mcuoutput1("mcuoutput1");
 std::string output0("output0");
 std::string wheel_motor("wheel_motor");
+std::string Wheel_Motor_Alt("Wheel_Motor_Alt");
 std::string lamp1("lamp1");
 std::string led2("led2");
 std::string cpuled6("cpuled6");
@@ -451,6 +454,19 @@ static int EnableForceSpringEffectScud = GetPrivateProfileInt(TEXT("Settings"), 
 static int ForceSpringStrengthScud = GetPrivateProfileInt(TEXT("Settings"), TEXT("ForceSpringStrengthScud"), 0, settingsFilename);
 static int EnableDamperScud = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableDamperScud"), 0, settingsFilename);
 static int DamperStrengthScud = GetPrivateProfileInt(TEXT("Settings"), TEXT("DamperStrengthScud"), 100, settingsFilename);
+
+static int configMinForceOverRev = GetPrivateProfileInt(TEXT("Settings"), TEXT("MinForceOverRev"), 0, settingsFilename);
+static int configMaxForceOverRev = GetPrivateProfileInt(TEXT("Settings"), TEXT("MaxForceOverRev"), 100, settingsFilename);
+static int configAlternativeMinForceLeftOverRev = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceLeftOverRev"), 0, settingsFilename);
+static int configAlternativeMaxForceLeftOverRev = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMaxForceLeftOverRev"), 100, settingsFilename);
+static int configAlternativeMinForceRightOverRev = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMinForceRightOverRev"), 0, settingsFilename);
+static int configAlternativeMaxForceRightOverRev = GetPrivateProfileInt(TEXT("Settings"), TEXT("AlternativeMaxForceRightOverRev"), 100, settingsFilename);
+static int configFeedbackLengthOverRev = GetPrivateProfileInt(TEXT("Settings"), TEXT("FeedbackLengthOverRev"), 120, settingsFilename);
+static int PowerModeOverRev = GetPrivateProfileInt(TEXT("Settings"), TEXT("PowerModeOverRev"), 0, settingsFilename);
+static int EnableForceSpringEffectOverRev = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableForceSpringEffectOverRev"), 0, settingsFilename);
+static int ForceSpringStrengthOverRev = GetPrivateProfileInt(TEXT("Settings"), TEXT("ForceSpringStrengthOverRev"), 0, settingsFilename);
+static int EnableDamperOverRev = GetPrivateProfileInt(TEXT("Settings"), TEXT("EnableDamperOverRev"), 0, settingsFilename);
+static int DamperStrengthOverRev = GetPrivateProfileInt(TEXT("Settings"), TEXT("DamperStrengthOverRev"), 100, settingsFilename);
 
 static int configMinForceLeMans = GetPrivateProfileInt(TEXT("Settings"), TEXT("MinForceLeMans"), 0, settingsFilename);
 static int configMaxForceLeMans = GetPrivateProfileInt(TEXT("Settings"), TEXT("MaxForceLeMans"), 100, settingsFilename);
@@ -1733,7 +1749,7 @@ static void FFBGameEffects(EffectConstants* constants, Helpers* helpers, EffectT
 	}
 	if (RunningFFB == Konami)
 	{
-		if (name == wheel || name == wheel_motor || name == pcboutput0 || name == output0)
+		if (name == wheel || name == wheel_motor || name == pcboutput0 || name == output0 || name == wheel0)
 		{
 			helpers->log("got value: ");
 			std::string ffs = std::to_string(stateFFB);
@@ -1761,7 +1777,7 @@ static void FFBGameEffects(EffectConstants* constants, Helpers* helpers, EffectT
 
 	if (RunningFFB == m2new) //Mame games using all values 
 	{
-		if (name == wheel || name == wheel_motor || name == pcboutput0 || name == output0)
+		if (name == wheel || name == wheel_motor || name == pcboutput0 || name == output0 || name == Wheel_Motor_Alt)
 		{
 			helpers->log("got value: ");
 			std::string ffs = std::to_string(ff);
@@ -3844,6 +3860,24 @@ void MAMESupermodel::FFBLoop(EffectConstants* constants, Helpers* helpers, Effec
 				ForceSpringStrength = ForceSpringStrengthSuperGTMAME;
 				EnableDamper = EnableDamperSuperGTMAME;
 				DamperStrength = DamperStrengthSuperGTMAME;
+
+				RunningFFB = "m2new";
+			}
+
+			if (romname == overrev)
+			{
+				configMinForce = configMinForceOverRev;
+				configMaxForce = configMaxForceOverRev;
+				configAlternativeMinForceLeft = configAlternativeMinForceLeftOverRev;
+				configAlternativeMaxForceLeft = configAlternativeMaxForceLeftOverRev;
+				configAlternativeMinForceRight = configAlternativeMinForceRightOverRev;
+				configAlternativeMaxForceRight = configAlternativeMaxForceRightOverRev;
+				configFeedbackLength = configFeedbackLengthOverRev;
+				PowerMode = PowerModeOverRev;
+				EnableForceSpringEffect = EnableForceSpringEffectOverRev;
+				ForceSpringStrength = ForceSpringStrengthOverRev;
+				EnableDamper = EnableDamperOverRev;
+				DamperStrength = DamperStrengthOverRev;
 
 				RunningFFB = "m2new";
 			}
