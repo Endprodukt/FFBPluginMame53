@@ -1247,7 +1247,7 @@ static void FFBGameEffects(EffectConstants* constants, Helpers* helpers, EffectT
 
 	if (RunningFFB == m2new) // Mame games using all values 
 	{
-		if (name == wheel || name == wheel_motor || name == pcboutput0 || name == output0 || name == Wheel_Motor_Alt)
+		if (name == wheel_motor)
 		{
 			// Umschalter für Constant / ConstantInf
 			auto sendConstant = [&](int direction, double strength)
@@ -1296,7 +1296,6 @@ static void FFBGameEffects(EffectConstants* constants, Helpers* helpers, EffectT
 			{
 				double percentForce = (stateFFB - 79) / 8.0;
 				triggers->Rumble(0, percentForce, 100);
-
 				sendConstant(constants->DIRECTION_FROM_RIGHT, percentForce);
 			}
 			// ROLL RIGHT
@@ -1304,8 +1303,13 @@ static void FFBGameEffects(EffectConstants* constants, Helpers* helpers, EffectT
 			{
 				double percentForce = (stateFFB - 95) / 8.0;
 				triggers->Rumble(percentForce, 0, 100);
-
 				sendConstant(constants->DIRECTION_FROM_LEFT, percentForce);
+			}
+			// NEUTRAL → Stop ConstantInf / Constant
+			else
+			{
+				// Neutral: ConstantInf beenden durch Kraft = 0
+				sendConstant(constants->DIRECTION_FROM_LEFT, 0.0);
 			}
 		}
 	}
